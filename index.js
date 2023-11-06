@@ -33,6 +33,7 @@ for (let square of squares){
     }
 
     let gameEnded = false;
+    let tied = false;
 
     function checkWin() {
         if(gameEnded){
@@ -46,12 +47,14 @@ for (let square of squares){
 
             if(squareA ==squareB && squareB == squareC && squareA !=""){
                 gameEnded = true;
+                tied = false;
                 declareWinner(squareA);
                 return;
             }
 
             if(Array.from(squares).every(square => square.textContent !="") && !gameEnded){
                 gameEnded= true;
+                tied =true;
                 declareWinner("It's a tie!")
             }
         }
@@ -59,10 +62,13 @@ for (let square of squares){
     }
 
    function declareWinner(winner){
-        const messageDiv = document.createElement("div");
-        messageDiv.textContent = "Winner: " + winner;
-        messageDiv.classList.add("message");
-        container.appendChild(messageDiv);
+        const messageDiv = document.querySelector(".message");
+        if(!tied){
+        messageDiv.innerHTML = "Winner: " + "<br>" + winner;
+    }else{messageDiv.innerHTML = winner;}
+
+        messageDiv.style.visibility = "visible";
+        container.style.backgroundColor = "#008080";
 }
 
 
