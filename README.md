@@ -17,6 +17,10 @@ The primary objective of this project is to offer a fun and engaging digital ver
 
 5. **Real-Time Updates:** The game updates in real-time, allowing players to see the game progress and outcomes instantly.
 
+**VIDEO**
+
+https://github.com/geoorgeqq/Tic-Tac-Toe/assets/149208774/5218d664-cffd-4056-afe9-f64cca0591af
+
 **Screenshots:**
 <p align="center">
   
@@ -36,6 +40,9 @@ The primary objective of this project is to offer a fun and engaging digital ver
 
 **How to Get Started:**
 To start playing the Tic-Tac-Toe game, follow the installation instructions in the project's documentation. Once installed, launch the game, and you can start playing against a friend or family member.
+
+
+
 
 We hope you enjoy playing this digital version of Tic-Tac-Toe and that it brings back fond memories of this classic game. If you have any questions or feedback, please don't hesitate to reach out to us.
 
