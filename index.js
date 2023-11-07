@@ -15,7 +15,7 @@ const winningConditions = [
 ];
 let player;
 let selector;
-let clicked = false;
+let clicked = false; // Initialize clicked to false
 
 
 for (let option of options) {
@@ -24,6 +24,7 @@ for (let option of options) {
         optionsDiv.style.visibility = "hidden";
         optionsDiv.style.display = "none";
         container.style.visibility = "visible";
+
     })
 }
 
@@ -32,31 +33,34 @@ const getNextState = (player) => {
 }
 
 
-
-for (let square of squares) {
-    clicked = false;
+  for (let square of squares) {
     square.addEventListener("mouseover", () => {
-        if (!clicked && square.textContent =="") {
-            square.textContent = selector;
-        }
-    })
-
+      if (!gameEnded && square.textContent === "") {
+        square.textContent = player; // Display the next player's turn sign on the hovered cell
+        square.style.opacity = "50%";
+      }
+    });
+  
     square.addEventListener("mouseout", () => {
-        if (!clicked) {
-            square.textContent = "";
-        }
-    })
+      if (!gameEnded && square.textContent === player && !clicked) {
+        square.textContent = ""; 
+        // Clear the content when the mouse leaves the cell
+      }
+    });
+  
     square.addEventListener("click", () => {
-        clicked = true;
-        if (!gameEnded && square.textContent === "") {
-            square.textContent = player;
-            selector = getNextState(player);
-            player = selector;
-            checkWin();
-        }
-    })
+      if (!gameEnded && square.textContent === player) {
+        square.textContent = player;
+        square.style.opacity = "100%";
+        selector = getNextState(player);
+        player = selector;
+        checkWin();
+        square.style.pointerEvents = "none";
+        clicked = false;
+      }
+    });
+  }
 
-}
 
 let gameEnded = false;
 let tied = false;
@@ -82,10 +86,13 @@ function checkWin() {
             gameEnded = true;
             tied = true;
             declareWinner("It's a tie!")
+            updateHover();
         }
     }
 
 }
+
+
 
 function declareWinner(winner) {
     const messageDiv = document.querySelector(".message");
@@ -96,5 +103,7 @@ function declareWinner(winner) {
     messageDiv.style.visibility = "visible";
     container.style.backgroundColor = "#008080";
 }
+
+
 
 
