@@ -36,18 +36,17 @@ const getNextState = (player) => {
 for (let square of squares) {
     clicked = false;
     square.addEventListener("mouseover", () => {
-        if (!clicked && square.textContent === "") {
-            square.textContent = player;
+        if (!clicked && square.textContent =="") {
+            square.textContent = selector;
         }
     })
 
     square.addEventListener("mouseout", () => {
-        if (!clicked && square.textContent === "") {
+        if (!clicked) {
             square.textContent = "";
         }
     })
     square.addEventListener("click", () => {
-        square.off("mouseout");
         clicked = true;
         if (!gameEnded && square.textContent === "") {
             square.textContent = player;
